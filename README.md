@@ -1,5 +1,3 @@
-# Batch download IPEDS
-
 ## Purpose
 
 Use this script to batch download [Integrated Postsecondary Education Data System (IPEDS)](http://nces.ed.gov/ipeds/) files. The downloaded files are not unzipped or processed in any way. This script simply saves you the trouble of having to point and click your way through the data center.
