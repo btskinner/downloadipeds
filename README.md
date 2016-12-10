@@ -20,7 +20,7 @@ The default behavior is to download **ALL OF IPEDS**. If you don't want everythi
 
 ## To Run
 
-For the default options, simply run the script `downloadipeds.R`. It will create subdirectories as needed to store data and program files. You may wish to place the folder in its own directory. Just make sure that `ipeds_file_list.txt` is in the same directory. For example, let's say you place both files in a directory called `ipeds`:
+For the default options, run the script `downloadipeds.R` as is. It will create subdirectories as needed to store data and program files. You may wish to place the folder in its own directory. Just make sure that `ipeds_file_list.txt` is in the same directory. For example, let's say you place both files in a directory called `ipeds`:
 
 ```
 ./ipeds
