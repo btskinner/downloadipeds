@@ -79,3 +79,7 @@ As of 10 December 2016, downloading all IPEDS files (setting all options to 	`TR
 |`./spss_prog`|4.9 MB|
 |`./stata_data`|673.9 MB|
 |`./stata_prog`|5.7 MB|
+
+## Combine
+
+To combine multiple IPEDS data files into a single dataset, you may find the following script useful: [Combine IPEDS](https://gist.github.com/btskinner/f42c87507169d0ba773c)
