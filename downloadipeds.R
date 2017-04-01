@@ -4,7 +4,7 @@
 ## <FILE> downloadipeds.R
 ## <AUTH> Benjamin Skinner
 ## <INIT> 21 July 2015
-## <REVN> 10 December 2016
+## <REVN> 01 April 2017
 ##
 ################################################################################
 
@@ -27,6 +27,11 @@
 ## The default behavior is download ALL OF IPEDS. If you don't want everything,
 ## modify `ipeds_file_list.txt` to only include those files that you want.
 ## Simply erase those you don't want, keeping one file name per row.
+##
+## You also have the option of whether you wish to overwrite existing files.
+## If you do, change the -overwrite- option to TRUE. The default behavior is
+## to only download files listed in `ipeds_file_list.txt` that have not already
+## be downloaded.
 ## -----------------------------------------------------------------------------
 
 ## clear
@@ -48,6 +53,9 @@ stata_data = FALSE
 prog_spss = FALSE
 prog_sas  = FALSE
 
+## overwrite already downloaded files
+overwrite = FALSE
+
 ## =============================================================================
 ## FUNCTIONS
 ## =============================================================================
@@ -63,9 +71,14 @@ mess <- function(to_screen) {
 make_dir <- function(opt, dir_name) { if (opt) dir.create(dir_name) }
 
 ## download file
-get_file <- function(opt, dir_name, url, file, suffix) {
+get_file <- function(opt, dir_name, url, file, suffix, overwrite) {
     if (opt) {
-        download.file(paste0(url, file, suffix), paste0(dir_name, file, suffix))
+        dest <- paste0(dir_name, file, suffix)
+        if (file.exists(dest) & overwrite) {
+            message(paste0('Already have: ', dest))
+        } else {
+            download.file(paste0(url, file, suffix), dest)
+        }
     }
 }
 
