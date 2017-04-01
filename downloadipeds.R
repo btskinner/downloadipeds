@@ -47,11 +47,11 @@ dictionary = TRUE
 
 ## STATA version
 ## (NB: downloading Stata version of data will also get Stata program files)
-stata_data = TRUE
+stata_data = FALSE
 
 ## other program files
-prog_spss = TRUE
-prog_sas  = TRUE
+prog_spss = FALSE
+prog_sas  = FALSE
 
 ## overwrite already downloaded files
 overwrite = FALSE
