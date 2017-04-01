@@ -19,7 +19,7 @@ You can also choose to download other data versions and/or program files:
 The default behavior is to download **ALL OF IPEDS**. If you don't want everything, modify `ipeds_file_list.txt` to include only those files that you want. Simply erase those you don't want, keeping one file name per row.
 
 You also have the option of whether you wish to overwrite existing files.
-If you do, change the -overwrite- option to TRUE. The default behavior is
+If you do, change the `overwrite` option to `TRUE`. The default behavior is
 to only download files listed in `ipeds_file_list.txt` that have not already been downloaded.
 
 ## To Run
@@ -67,20 +67,23 @@ stata_data = FALSE
 ## other program files
 prog_spss = FALSE
 prog_sas  = FALSE
+
+## overwrite already downloaded files
+overwrite = FALSE
 ```
 
 ## Data size
 
-As of 10 December 2016, downloading all IPEDS files (setting all options to 	`TRUE`) requires approximately 1.5 GB of disk space. Granted, you probably don't need both regular and Stata versions of the data files (which are the bulk of the directory size). Here are the approximate subdirectory file sizes if you download all data files from all years:
+As of 1 April 2017, downloading all IPEDS files (setting all options to 	`TRUE`) requires approximately 1.52 GB of disk space. Granted, you probably don't need both regular and Stata versions of the data files (which are the bulk of the directory size). Here are the approximate subdirectory file sizes if you download all data files from all years:
 
 |Subdirectory|Approximate Size|
 |:--|:-:|
-|`./data`|770.5 MB|
-|`./dictionary`|16.6 MB|
-|`./sas_prog`|5.1 MB|
-|`./spss_prog`|4.9 MB|
-|`./stata_data`|673.9 MB|
-|`./stata_prog`|5.7 MB|
+|`./data`|790.4 MB|
+|`./dictionary`|17.4 MB|
+|`./sas_prog`|5.2 MB|
+|`./spss_prog`|5.0 MB|
+|`./stata_data`|693.7 MB|
+|`./stata_prog`|5.8 MB|
 
 ## Combine
 
