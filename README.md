@@ -18,6 +18,10 @@ You can also choose to download other data versions and/or program files:
 
 The default behavior is to download **ALL OF IPEDS**. If you don't want everything, modify `ipeds_file_list.txt` to include only those files that you want. Simply erase those you don't want, keeping one file name per row.
 
+You also have the option of whether you wish to overwrite existing files.
+If you do, change the -overwrite- option to TRUE. The default behavior is
+to only download files listed in `ipeds_file_list.txt` that have not already been downloaded.
+
 ## To Run
 
 For the default options, run the script `downloadipeds.R` as is. It will create subdirectories as needed to store data and program files. You may wish to place the folder in its own directory. Just make sure that `ipeds_file_list.txt` is in the same directory. For example, let's say you place both files in a directory called `ipeds`:

@@ -31,7 +31,7 @@
 ## You also have the option of whether you wish to overwrite existing files.
 ## If you do, change the -overwrite- option to TRUE. The default behavior is
 ## to only download files listed in `ipeds_file_list.txt` that have not already
-## be downloaded.
+## been downloaded.
 ## -----------------------------------------------------------------------------
 
 ## clear
