@@ -47,11 +47,11 @@ dictionary = TRUE
 
 ## STATA version
 ## (NB: downloading Stata version of data will also get Stata program files)
-stata_data = FALSE
+stata_data = TRUE
 
 ## other program files
-prog_spss = FALSE
-prog_sas  = FALSE
+prog_spss = TRUE
+prog_sas  = TRUE
 
 ## overwrite already downloaded files
 overwrite = FALSE
@@ -74,10 +74,12 @@ make_dir <- function(opt, dir_name) { if (opt) dir.create(dir_name) }
 get_file <- function(opt, dir_name, url, file, suffix, overwrite) {
     if (opt) {
         dest <- paste0(dir_name, file, suffix)
-        if (file.exists(dest) & overwrite) {
+        if (file.exists(dest) & !overwrite) {
             message(paste0('Already have: ', dest))
+            return(0)
         } else {
             download.file(paste0(url, file, suffix), dest)
+            return(1)
         }
     }
 }
@@ -101,7 +103,7 @@ ipeds <- readLines('./ipeds_file_list.txt')
 ipeds <- ipeds[ipeds != '']
 
 ## data url
-url <- 'http://nces.ed.gov/ipeds/datacenter/data/'
+url <- 'https://nces.ed.gov/ipeds/datacenter/data/'
 
 ## create folders if they don't exist
 mess('Creating directories for downloaded files')
@@ -114,34 +116,44 @@ make_dir(prog_sas, './sas_prog')
 
 ## get timer (pause == max(# of options, 3))
 opts <- c(primary_data, stata_data, dictionary, prog_spss, prog_sas)
-pause <- max(length(which(opts)), 3)
 
 ## loop through files
 for(i in 1:length(ipeds)) {
 
-    mess(paste0('Now downloading: ', ipeds[i]))
+    ow <- overwrite
+    f <- ipeds[i]
+    mess(paste0('Now downloading: ', f))
 
     ## data
-    get_file(primary_data, './data/', url, ipeds[i], '.zip')
+    d1 <- get_file(primary_data, './data/', url, f, '.zip', ow)
 
     ## dictionary
-    get_file(dictionary, './dictionary/', url, ipeds[i], '_Dict.zip')
+    d2 <- get_file(dictionary, './dictionary/', url, f, '_Dict.zip', ow)
 
     ## Stata data and program (optional)
-    get_file(stata_data, './stata_data/', url, ipeds[i], '_Data_Stata.zip')
-    get_file(stata_data, './stata_prog/', url, ipeds[i], '_Stata.zip')
+    d3 <- get_file(stata_data, './stata_data/', url, f, '_Data_Stata.zip', ow)
+    d4 <- get_file(stata_data, './stata_prog/', url, f, '_Stata.zip', ow)
 
     ## SPSS program (optional)
-    get_file(prog_spss, './spss_prog/', url, ipeds[i], '_SPS.zip')
+    d5 <- get_file(prog_spss, './spss_prog/', url, f, '_SPS.zip', ow)
 
     ## SAS program (optional)
-    get_file(prog_sas, './sas_prog/', url, ipeds[i], '_SAS.zip')
+    d6 <- get_file(prog_sas, './sas_prog/', url, f, '_SAS.zip', ow)
 
-    ## pause and countdown
-    countdown(pause, 'Give IPEDS a little break ...')
+    ## get number of download requests
+    dls <- sum(d1, d2, d3, d4, d5, d6)
+
+    if (dls > 0) {
+        ## set pause based on number of download requests
+        pause <- max(dls, 3)
+        ## pause and countdown
+        countdown(pause, 'Give IPEDS a little break ...')
+    } else {
+        message('No downloads necessary; moving to next file')
+    }
 }
 
-mess('\nFinished!')
+mess('Finished!')
 
 ## =============================================================================
 ## END
