@@ -72,6 +72,17 @@ prog_sas  = FALSE
 overwrite = FALSE
 ```
 
+To change output directory, modify `out_dir` (default is the current directory):
+
+```
+## -----------------------------------------------------------------------------
+## CHOOSE OUTPUT DIRECTORY (DEFAULT == '.', which is current directory)
+## -----------------------------------------------------------------------------
+
+out_dir = '.'
+
+```
+
 ## Data size
 
 As of 1 April 2017, downloading all IPEDS files (setting all options to 	`TRUE`) requires approximately 1.52 GB of disk space. Granted, you probably don't need both regular and Stata versions of the data files (which are the bulk of the directory size). Here are the approximate subdirectory file sizes if you download all data files from all years:
