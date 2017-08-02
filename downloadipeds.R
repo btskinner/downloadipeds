@@ -56,6 +56,12 @@ prog_sas  = FALSE
 ## overwrite already downloaded files
 overwrite = FALSE
 
+## -----------------------------------------------------------------------------
+## CHOOSE OUTPUT DIRECTORY (DEFAULT == '.', which is current directory)
+## -----------------------------------------------------------------------------
+
+out_dir = '.'
+
 ## =============================================================================
 ## FUNCTIONS
 ## =============================================================================
@@ -68,17 +74,25 @@ mess <- function(to_screen) {
 }
 
 ## create subdirectories
-make_dir <- function(opt, dir_name) { if (opt) dir.create(dir_name) }
+make_dir <- function(opt, dir_name) {
+    if (opt & dir.exists(dir_name)) {
+        message(paste0('Already have directory: ', dir_name))
+    } else if (opt & !dir.exists(dir_name)) {
+        message(paste0('Creating directory: ', dir_name))
+        dir.create(dir_name)
+    }
+}
 
 ## download file
 get_file <- function(opt, dir_name, url, file, suffix, overwrite) {
     if (opt) {
-        dest <- paste0(dir_name, file, suffix)
+        dest <- file.path(dir_name, paste0(file, suffix))
         if (file.exists(dest) & !overwrite) {
-            message(paste0('Already have: ', dest))
+            message(paste0('Already have file: ', dest))
             return(0)
         } else {
             download.file(paste0(url, file, suffix), dest)
+            Sys.sleep(1)
             return(1)
         }
     }
@@ -105,14 +119,23 @@ ipeds <- ipeds[ipeds != '']
 ## data url
 url <- 'https://nces.ed.gov/ipeds/datacenter/data/'
 
+## init potential file paths
+data_dir <- file.path(out_dir, 'data')
+stata_data_dir <- file.path(out_dir, 'stata_data')
+dictionary_dir <- file.path(out_dir, 'dictionary')
+stata_prog_dir <- file.path(out_dir, 'stata_prog')
+spss_prog_dir <- file.path(out_dir, 'spss_prog')
+sas_prog_dir <-  file.path(out_dir, 'sas_prog')
+
 ## create folders if they don't exist
 mess('Creating directories for downloaded files')
-make_dir(primary_data, './data')
-make_dir(stata_data, './stata_data')
-make_dir(dictionary, './dictionary')
-make_dir(stata_data, './stata_prog')
-make_dir(prog_spss, './spss_prog')
-make_dir(prog_sas, './sas_prog')
+make_dir(TRUE, out_dir)
+make_dir(primary_data, data_dir)
+make_dir(stata_data, stata_data_dir)
+make_dir(dictionary, dictionary_dir)
+make_dir(stata_data, stata_prog_dir)
+make_dir(prog_spss, spss_prog_dir)
+make_dir(prog_sas, sas_prog_dir)
 
 ## get timer (pause == max(# of options, 3))
 opts <- c(primary_data, stata_data, dictionary, prog_spss, prog_sas)
@@ -125,20 +148,20 @@ for(i in 1:length(ipeds)) {
     mess(paste0('Now downloading: ', f))
 
     ## data
-    d1 <- get_file(primary_data, './data/', url, f, '.zip', ow)
+    d1 <- get_file(primary_data, data_dir, url, f, '.zip', ow)
 
     ## dictionary
-    d2 <- get_file(dictionary, './dictionary/', url, f, '_Dict.zip', ow)
+    d2 <- get_file(dictionary, dictionary_dir, url, f, '_Dict.zip', ow)
 
     ## Stata data and program (optional)
-    d3 <- get_file(stata_data, './stata_data/', url, f, '_Data_Stata.zip', ow)
-    d4 <- get_file(stata_data, './stata_prog/', url, f, '_Stata.zip', ow)
+    d3 <- get_file(stata_data, stata_data_dir, url, f, '_Data_Stata.zip', ow)
+    d4 <- get_file(stata_data, stata_prog_dir, url, f, '_Stata.zip', ow)
 
     ## SPSS program (optional)
-    d5 <- get_file(prog_spss, './spss_prog/', url, f, '_SPS.zip', ow)
+    d5 <- get_file(prog_spss, spss_prog_dir, url, f, '_SPS.zip', ow)
 
     ## SAS program (optional)
-    d6 <- get_file(prog_sas, './sas_prog/', url, f, '_SAS.zip', ow)
+    d6 <- get_file(prog_sas, sas_prog_dir, url, f, '_SAS.zip', ow)
 
     ## get number of download requests
     dls <- sum(d1, d2, d3, d4, d5, d6)
