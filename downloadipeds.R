@@ -2,9 +2,9 @@
 ##
 ## <PROJ> Batch download IPEDS files
 ## <FILE> downloadipeds.R
-## <AUTH> Benjamin Skinner
+## <AUTH> Benjamin Skinner (@btskinner)
 ## <INIT> 21 July 2015
-## <REVN> 01 April 2017
+## <REVN> 18 January 2018
 ##
 ################################################################################
 
@@ -112,9 +112,9 @@ countdown <- function(pause, text) {
 ## RUN
 ## =============================================================================
 
-## read in files; remove blank lines
+## read in files; remove blank lines & lines starting with #
 ipeds <- readLines('./ipeds_file_list.txt')
-ipeds <- ipeds[ipeds != '']
+ipeds <- ipeds[ipeds != '' & !grepl('^#', ipeds)]
 
 ## data url
 url <- 'https://nces.ed.gov/ipeds/datacenter/data/'

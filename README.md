@@ -2,6 +2,8 @@
 
 Use this script to batch download [Integrated Postsecondary Education Data System (IPEDS)](http://nces.ed.gov/ipeds/) files. The downloaded files are not unzipped or processed in any way. This script simply saves you the trouble of having to point and click your way through the data center.
 
+(You can also download database files [here](https://nces.ed.gov/ipeds/Section/accessdatabase/), but you need MS Access to open them.) 
+
 Only those files listed in `ipeds_file_list.txt` will be downloaded. The default behavior is to download each of the following files into their own subdirectories: 
  
 1. Data file  
@@ -17,6 +19,8 @@ You can also choose to download other data versions and/or program files:
 ### IMPORTANT NOTE
 
 The default behavior is to download **ALL OF IPEDS**. If you don't want everything, modify `ipeds_file_list.txt` to include only those files that you want. Simply erase those you don't want, keeping one file name per row.
+
+I try to keep `ipeds_file_list.txt` updated, but if I've missed a file or haven't updated in a while, just add the name of the file or files, one to a line. The downloading script ignores lines starting with hashes (`#`), so you can add notes or better section headers to the file if you want.
 
 You also have the option of whether you wish to overwrite existing files.
 If you do, change the `overwrite` option to `TRUE`. The default behavior is
@@ -85,16 +89,16 @@ out_dir = '.'
 
 ## Data size
 
-As of 1 April 2017, downloading all IPEDS files (setting all options to 	`TRUE`) requires approximately 1.52 GB of disk space. Granted, you probably don't need both regular and Stata versions of the data files (which are the bulk of the directory size). Here are the approximate subdirectory file sizes if you download all data files from all years:
+As of 18 January 2018, downloading all IPEDS files (setting all options to 	`TRUE`) requires approximately 1.64 GB of disk space. Granted, you probably don't need both regular and Stata versions of the data files (which are the bulk of the directory size). Here are the approximate subdirectory file sizes if you download all data files from all years:
 
 |Subdirectory|Approximate Size|
 |:--|:-:|
-|`./data`|790.4 MB|
-|`./dictionary`|17.4 MB|
-|`./sas_prog`|5.2 MB|
-|`./spss_prog`|5.0 MB|
-|`./stata_data`|693.7 MB|
-|`./stata_prog`|5.8 MB|
+|`./data`|852 MB|
+|`./dictionary`|20 MB|
+|`./sas_prog`|6 MB|
+|`./spss_prog`|5 MB|
+|`./stata_data`|755 MB|
+|`./stata_prog`|6 MB|
 
 ## Combine
 
