@@ -1,3 +1,19 @@
+##
+## This is as list of all IPEDS files as given in the
+## complete data files portal. If you want to add files
+## that I've missed, be sure they match the name of the
+## link in the Data File column of the drop down table.
+##
+## You can prevent the script from downloading
+## specific files by either commenting out the name with
+## a hash symbol (#) or erasing it all together.
+##
+## Keep in mind that if you've already downloaded some
+## of the files before, the download script will not
+## download them again unless you change the -overwrite-
+## option to TRUE.
+##
+
 ## ---------------------------
 ## 2016
 ## ---------------------------

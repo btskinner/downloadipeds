@@ -9,7 +9,7 @@
 ################################################################################
 
 ## PURPOSE ---------------------------------------------------------------------
-
+##
 ## Use this script to batch download IPEDS files. Only those files listed
 ## in `ipeds_file_list.txt` will be downloaded. The default behavior is to
 ## download each of the following files into their own subdirectories:
@@ -26,7 +26,8 @@
 ##
 ## The default behavior is download ALL OF IPEDS. If you don't want everything,
 ## modify `ipeds_file_list.txt` to only include those files that you want.
-## Simply erase those you don't want, keeping one file name per row.
+## Simply erase those you don't want, keeping one file name per row, or
+## comment them out using a hash symbol (#).
 ##
 ## You also have the option of whether you wish to overwrite existing files.
 ## If you do, change the -overwrite- option to TRUE. The default behavior is

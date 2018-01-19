@@ -1,8 +1,8 @@
-## Purpose
+# Purpose
 
 Use this script to batch download [Integrated Postsecondary Education Data System (IPEDS)](http://nces.ed.gov/ipeds/) files. The downloaded files are not unzipped or processed in any way. This script simply saves you the trouble of having to point and click your way through the data center.
 
-(You can also download database files [here](https://nces.ed.gov/ipeds/Section/accessdatabase/), but you need MS Access to open them.) 
+(You can also download database files [here](https://nces.ed.gov/ipeds/Section/accessdatabase/), but you need MS Access to open them and they only go back to 2007-2008.) 
 
 Only those files listed in `ipeds_file_list.txt` will be downloaded. The default behavior is to download each of the following files into their own subdirectories: 
  
@@ -16,17 +16,17 @@ You can also choose to download other data versions and/or program files:
 3. SPSS program file  
 4. SAS program file
 
-### IMPORTANT NOTE
+# IMPORTANT NOTE
 
-The default behavior is to download **ALL OF IPEDS**. If you don't want everything, modify `ipeds_file_list.txt` to include only those files that you want. Simply erase those you don't want, keeping one file name per row.
+The default behavior is to download **ALL OF IPEDS**. If you don't want everything, modify `ipeds_file_list.txt` to include only those files that you want. Simply erase those you don't want, keeping one file name per row or comment them out using a hash symbol (#).
 
-I try to keep `ipeds_file_list.txt` updated, but if I've missed a file or haven't updated in a while, just add the name of the file or files, one to a line. The downloading script ignores lines starting with hashes (`#`), so you can add notes or better section headers to the file if you want.
+I try to keep `ipeds_file_list.txt` updated, but if I've missed a file or haven't updated in a while, just add the name of the file or files, one to a line. Since the downloading script ignores lines starting with hashes, you can add notes or better section headers to the file if you want.
 
 You also have the option of whether you wish to overwrite existing files.
 If you do, change the `overwrite` option to `TRUE`. The default behavior is
 to only download files listed in `ipeds_file_list.txt` that have not already been downloaded.
 
-## To Run
+# To Run
 
 For the default options, run the script `downloadipeds.R` as is. It will create subdirectories as needed to store data and program files. You may wish to place the folder in its own directory. Just make sure that `ipeds_file_list.txt` is in the same directory. For example, let's say you place both files in a directory called `ipeds`:
 
@@ -87,7 +87,7 @@ out_dir = '.'
 
 ```
 
-## Data size
+# Data size
 
 As of 18 January 2018, downloading all IPEDS files (setting all options to 	`TRUE`) requires approximately 1.64 GB of disk space. Granted, you probably don't need both regular and Stata versions of the data files (which are the bulk of the directory size). Here are the approximate subdirectory file sizes if you download all data files from all years:
 
@@ -100,6 +100,6 @@ As of 18 January 2018, downloading all IPEDS files (setting all options to 	`TRU
 |`./stata_data`|755 MB|
 |`./stata_prog`|6 MB|
 
-## Combine
+# Combine
 
 To combine multiple IPEDS data files into a single dataset, you may find the following script useful: [Combine IPEDS](https://gist.github.com/btskinner/f42c87507169d0ba773c)
