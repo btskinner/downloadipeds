@@ -15,8 +15,53 @@
 ##
 
 ## -----------------------------
-## LAST UPDATED: 2 December 2019
+## LAST UPDATED: 15 October 2020
 ## -----------------------------
+
+## ---------------------------
+## 2019
+## ---------------------------
+
+# NB: Those files marked out are not currently available, but likely
+# to be available in the future.
+
+HD2019
+IC2019
+IC2019_AY
+IC2019_PY
+EFFY2019
+EFIA2019
+ADM2019
+# EF2019A
+# EF2019CP
+# EF2019B
+# EF2019C
+# EF2019D
+# EF2019A_DIST
+C2019_A
+C2019_B
+C2019_C
+C2019DEP
+# SAL2019_IS
+# SAL2019_NIS
+# S2019_OC
+# S2019_SIS
+# S2019_IS
+# S2019_NH
+# EAP2019
+# F1819_F1A
+# F1819_F2
+# F1819_F3
+SFA1819
+SFAV1819
+GR2019
+GR2019_L2
+GR2019_PELL_SSL
+GR200_19
+OM2019
+AL2019
+OM2019
+FLAGS2019
 
 ## ---------------------------
 ## 2018
