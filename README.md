@@ -41,7 +41,10 @@ request with an updated version of `ipeds_file_list.txt`.
 You also have the option of whether you wish to overwrite existing
 files.  If you do, change the `overwrite` option to `TRUE`. The
 default behavior is to only download files listed in
-`ipeds_file_list.txt` that have not already been downloaded.
+`ipeds_file_list.txt` that have not already been downloaded. Keep in
+mind that NCES revises old files from time to time, so it may be best
+to overwrite old files unless you have a reason to prefer the old
+version. 
 
 # To Run
 
@@ -115,8 +118,8 @@ out_dir = '.'
 
 # Data size
 
-As of 2 December 2019, downloading all IPEDS files (setting all
-options to `TRUE`) requires approximately 2.22 GB of disk
+As of 15 October 2020, downloading all IPEDS files (setting all
+options to `TRUE`) requires approximately 2.25 GB of disk
 space. Granted, you probably don't need both regular and Stata
 versions of the data files (which are the bulk of the directory
 size). Here are the approximate subdirectory file sizes if you
@@ -124,12 +127,12 @@ download all data files from all years:
 
 |Subdirectory|Approximate Size|
 |:--|:-:|
-|`./data`|1.07 GB|
-|`./dictionary`|30.4 MB|
-|`./sas_prog`|6.1 MB|
-|`./spss_prog`|19.5 MB|
-|`./stata_data`|1.09 GB|
-|`./stata_prog`|6.5 MB|
+|`./data`|1.08 GB|
+|`./dictionary`|31.6 MB|
+|`./sas_prog`|6.3 MB|
+|`./spss_prog`|19.7 MB|
+|`./stata_data`|1.1 GB|
+|`./stata_prog`|6.7 MB|
 
 # Combine
 
