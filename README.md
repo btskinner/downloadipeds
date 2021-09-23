@@ -8,7 +8,7 @@ the data center.
 
 (You can also download database files
 [here](https://nces.ed.gov/ipeds/Section/accessdatabase/), but you
-need MS Access to open them and they only go back to 2007-2008.)
+need MS Access to open them and they only go back to 2004-2005.)
 
 Only those files listed in `ipeds_file_list.txt` will be
 downloaded. The default behavior is to download each of the following
