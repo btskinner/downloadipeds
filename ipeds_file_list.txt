@@ -14,9 +14,9 @@
 ## option to TRUE.
 ##
 
-## -----------------------------
-## LAST UPDATED: 27 July 2021
-## -----------------------------
+## -------------------------------
+## LAST UPDATED: 23 September 2021
+## -------------------------------
 
 # NB: Those files marked out are not currently available, but likely
 # to be available in the future.
