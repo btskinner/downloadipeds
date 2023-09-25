@@ -118,8 +118,8 @@ out_dir = '.'
 
 # Data size
 
-As of 15 October 2020, downloading all IPEDS files (setting all
-options to `TRUE`) requires approximately 2.25 GB of disk
+As of 25 September 2023, downloading all IPEDS files (setting all
+options to `TRUE`) requires approximately 2.38 GB of disk
 space. Granted, you probably don't need both regular and Stata
 versions of the data files (which are the bulk of the directory
 size). Here are the approximate subdirectory file sizes if you
@@ -127,12 +127,12 @@ download all data files from all years:
 
 |Subdirectory|Approximate Size|
 |:--|:-:|
-|`./data`|1.08 GB|
-|`./dictionary`|31.6 MB|
-|`./sas_prog`|6.3 MB|
-|`./spss_prog`|19.7 MB|
-|`./stata_data`|1.1 GB|
-|`./stata_prog`|6.7 MB|
+|`./data`|1.16 GB|
+|`./dictionary`|35.9 MB|
+|`./sas_prog`|4.7 MB|
+|`./spss_prog`|4.3 MB|
+|`./stata_data`|1.17 GB|
+|`./stata_prog`|5 MB|
 
 # Combine
 
