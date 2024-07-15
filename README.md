@@ -46,6 +46,20 @@ mind that NCES revises old files from time to time, so it may be best
 to overwrite old files unless you have a reason to prefer the old
 version. 
 
+## Usage
+
+### R Script
+
+1. Make sure you have R installed on your system.
+2. Run the `downloadipeds.R` script.
+
+### Python Script
+
+1. Make sure you have Python installed on your system.
+2. Save the `downloadipeds.py` script.
+3. Ensure you have `ipeds_file_list.txt` in the same directory as the script.
+4. Open a terminal or command prompt, navigate to the directory containing the script and the file list, and run the script
+
 # To Run
 
 For the default options, run the script `downloadipeds.R` as is. It
